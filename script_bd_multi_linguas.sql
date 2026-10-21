@@ -49,15 +49,24 @@ INSERT INTO recomendacao_vocabulario(id_usuario, palavra_expressao, traducao) va
 
 CREATE TABLE reporte_falha_traducao (
   id_reporte SERIAL PRIMARY KEY,
-  id_usuario         int  NOT NULL,
+  fk_usuario         int  NOT NULL,
   texto_original     text NOT NULL,
   traducao_incorreta text NOT NULL,
   carrecao_sugerida  text,
-  data_reporte       timestamp
+  data_reporte       timestamp,
+  constraint fk_usuario foreign key (fk_usuario)references usuario (id_usuario)
+
 );
 
 SELECT * FROM reporte_falha_traducao;
-INSERT INTO reporte_falha_traducao(id_usuario, texto_original, traducao_incorreta) VALUES ('2','textoo','mais textoo')
+
+INSERT INTO reporte_falha_traducao(fk_usuario, texto_original, traducao_incorreta) VALUES (1,'textoo','mais textoo')
+
+INSERT INTO reporte_falha_traducao(fk_usuario, texto_original, traducao_incorreta) VALUES (1,'asdfghj','sdfghjkl')
+
+INSERT INTO reporte_falha_traducao(fk_usuario, texto_original, traducao_incorreta) VALUES (1,'texo','ms texo')
+
+drop table reporte_falha_traducao
 
 drop table turma
 
