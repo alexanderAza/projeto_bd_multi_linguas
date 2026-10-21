@@ -15,6 +15,10 @@ SELECT * FROM usuario;
 
 INSERT INTO usuario (nome, email, senha_hash, data_nascimento, faixa_etaria, tipo_perfil, id_turma, data_cadastro) values ('ja', 'j@gmail.com', '12', '2011/05/14', '15', 'es', '01', '2026/01/01');
 
+INSERT INTO usuario (nome, email, senha_hash, data_nascimento, faixa_etaria, tipo_perfil, id_turma, data_cadastro) values ('jat', 'jat@gmail.com', '13', '2011/05/14', '15', 'es', '01', '2026/01/01');
+
+INSERT INTO usuario (nome, email, senha_hash, data_nascimento, faixa_etaria, tipo_perfil, id_turma, data_cadastro) values ('jati', 'jati@gmail.com', '14', '2011/05/14', '15', 'es', '01', '2026/01/01');
+
 
 CREATE TABLE perfil_estudante (
   id_perfil SERIAL PRIMARY KEY,
