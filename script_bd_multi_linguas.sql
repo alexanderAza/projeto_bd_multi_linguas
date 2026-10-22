@@ -41,19 +41,26 @@ drop table usuario
 
 CREATE TABLE perfil_estudante (
   id_perfil SERIAL PRIMARY KEY,
-  id_usuario INT NOT NULL,
+  fk_usuario INT NOT NULL,
   idioma_nativo VARCHAR (10) NOT NULL,
   idioma_estudo VARCHAR (10) NOT NULL,
   estilo_vocabulario varchar (255),
   modulos_concluidos_acumulados INT,
-  nivel_fluencia_atual VARCHAR (20)
+  nivel_fluencia_atual VARCHAR (20),
+  constraint fk_usuario foreign key (fk_usuario)references usuario (id_usuario)
 );
 
 SELECT * FROM perfil_estudante;
 
-INSERT INTO perfil_estudante (id_usuario, idioma_nativo, idioma_estudo) values ('2', 'formal', 'academico') ;
+INSERT INTO perfil_estudante (fk_usuario, idioma_nativo, idioma_estudo) values (1, 'formal', 'academico') ;
+
+INSERT INTO perfil_estudante (fk_usuario, idioma_nativo, idioma_estudo) values (2, 'formal', 'academico') ;
+
+INSERT INTO perfil_estudante (fk_usuario, idioma_nativo, idioma_estudo) values (3, 'formal', 'academico') ;
 
 TRUNCATE TABLE perfil_estudante;
+
+drop table perfil_estudante
 
 
 
