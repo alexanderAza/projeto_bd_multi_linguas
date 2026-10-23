@@ -187,3 +187,22 @@ INSERT INTO assinatura_vip (fk_usuario, tipo_plano, status) VALUES (2, 'bronze',
 
 INSERT INTO assinatura_vip (fk_usuario, tipo_plano, status) VALUES (3, 'bronze', 'Subindo de nível');
 
+CREATE TABLE avaliacao_nivel(
+  id_avaliacao SERIAL PRIMARY KEY,
+  fk_usuario     int NOT NULL,
+  pontuacao_obtida decimal(5,2) NOT NULL,
+  nivel_resultante  varchar(20) NOT NULL,
+  eh_reavaliacao_obrigatoria boolean,
+  data_realizacao  timestamp,
+  constraint fk_usuario foreign key (fk_usuario)references usuario (id_usuario)
+
+);
+
+SELECT * FROM avaliacao_nivel
+
+
+INSERT INTO  avaliacao_nivel (fk_usuario, pontuacao_obtida, nivel_resultante, data_realizacao) VALUES (1, 7.5, 17, '11-09-2001');
+
+INSERT INTO  avaliacao_nivel (fk_usuario, pontuacao_obtida, nivel_resultante, data_realizacao) VALUES (2, 0.3, 17, '11-09-2001');
+
+INSERT INTO  avaliacao_nivel (fk_usuario, pontuacao_obtida, nivel_resultante, data_realizacao) VALUES (3, 5, 17, '12-09-2001');
