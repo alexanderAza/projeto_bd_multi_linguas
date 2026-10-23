@@ -142,3 +142,23 @@ INSERT INTO sala_chat (fk_usuario_1, fk_usuario_2) values (1, 2);
 INSERT INTO sala_chat (fk_usuario_1, fk_usuario_2) values (3, 2);
 
 INSERT INTO sala_chat (fk_usuario_1, fk_usuario_2) values (3, 1);
+
+CREATE TABLE mensagem_chat(
+  id_mensagem SERIAL PRIMARY KEY,
+  fk_sala int     not null,
+  fk_usuario        int not null,
+  texto_original    text not null,
+  texto_traduzido       timestamp,
+  idioma_origem     varchar(10) not null,
+  idioma_destino    varchar(10) not null,
+  comtem_conteudo_inapropriado    boolean,
+  data_envio    timestamp,
+  constraint fk_sala foreign key (fk_sala)references sala_chat (id_sala),
+  constraint fk_usuario foreign key (fk_usuario)references usuario (id_usuario)
+);
+
+
+SELECT * FROM  mensagem_chat;
+
+INSERT INTO mensagem_chat (fk_sala, fk_emissor ,texto_original ,texto_traduzido, idioma_origem, idioma_destino) VALUES ();
+
