@@ -64,18 +64,26 @@ drop table perfil_estudante
 
 
 
+drop table recomendacao_vocabulario
+
+
 CREATE TABLE recomendacao_vocabulario(
   id_recomendacao SERIAL PRIMARY KEY,
-  id_usuario int NOT NULL,
+  fk_usuario int NOT NULL,
   palavra_expressao varchar(100) NOT NULL,
   traducao varchar(100) NOT NULL,
   frequencia_uso int,
   sugeriada_por_nlp boolean,
-  data_ultima_ocorrencia timestamp
+  data_ultima_ocorrencia timestamp, 
+  constraint fk_usuario foreign key (fk_usuario)references usuario (id_usuario)
 
 );
 SELECT * FROM recomendacao_vocabulario;
-INSERT INTO recomendacao_vocabulario(id_usuario, palavra_expressao, traducao) values ('2','TEXTO','MAIS TEXTO');
+INSERT INTO recomendacao_vocabulario(fk_usuario, palavra_expressao, traducao) values (2,'TEXTO','MAIS TEXTO');
+
+INSERT INTO recomendacao_vocabulario(fk_usuario, palavra_expressao, traducao) values (3,'TEXTO','MAIS TEXTO');
+
+INSERT INTO recomendacao_vocabulario(fk_usuario, palavra_expressao, traducao) values (1,'TEXTO','MAIS TEXTO');
 
 CREATE TABLE reporte_falha_traducao (
   id_reporte SERIAL PRIMARY KEY,
