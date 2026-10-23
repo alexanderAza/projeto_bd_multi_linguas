@@ -124,3 +124,21 @@ INSERT INTO turma(fk_escola, nome_turma, ano_letivo) VALUES (2,'escola','181234'
 drop TABLE professor
 drop TABLE pessoa
 drop TABLE turma
+
+create table sala_chat (
+  id_sala INT generated always as identity primary key,
+  fk_usuario_1 INT not null,
+  fk_usuario_2 INT not null,
+  autorizado_por_responsavel boolean,
+  data_criacao timestamp,
+  constraint fk_usuario_01 foreign key (fk_usuario_1)references usuario (id_usuario),
+  constraint fk_usuario_02 foreign key (fk_usuario_2)references usuario (id_usuario)
+);
+
+SELECT * FROM sala_chat;
+
+INSERT INTO sala_chat (fk_usuario_1, fk_usuario_2) values (1, 2);
+
+INSERT INTO sala_chat (fk_usuario_1, fk_usuario_2) values (3, 2);
+
+INSERT INTO sala_chat (fk_usuario_1, fk_usuario_2) values (3, 1);
