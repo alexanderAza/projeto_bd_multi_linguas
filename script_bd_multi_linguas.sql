@@ -143,6 +143,7 @@ INSERT INTO sala_chat (fk_usuario_1, fk_usuario_2) values (3, 2);
 
 INSERT INTO sala_chat (fk_usuario_1, fk_usuario_2) values (3, 1);
 
+
 CREATE TABLE mensagem_chat(
   id_mensagem SERIAL PRIMARY KEY,
   fk_sala int     not null,
@@ -161,4 +162,28 @@ CREATE TABLE mensagem_chat(
 SELECT * FROM  mensagem_chat;
 
 INSERT INTO mensagem_chat (fk_sala, fk_emissor ,texto_original ,texto_traduzido, idioma_origem, idioma_destino) VALUES ();
+
+
+CREATE TABLE assinatura_vip (
+  id_assinatura SERIAL PRIMARY KEY,
+  fk_usuario INT NOT NULL,
+  tipo_plano varchar (10) NOT NULL,
+  status varchar (20) NOT NULL,
+  cota_semanal_traducoes INT,
+  traducoes_usadas_semana INT,
+  data_inicio TIMESTAMP,
+  data_expiracao TIMESTAMP,
+   constraint fk_usuario foreign key (fk_usuario)references usuario (id_usuario)
+
+);
+
+drop table assinatura_vip;
+
+SELECT * FROM assinatura_vip
+
+INSERT INTO assinatura_vip (fk_usuario, tipo_plano, status) VALUES (1, 'gold', 'Acesso liberado');
+
+INSERT INTO assinatura_vip (fk_usuario, tipo_plano, status) VALUES (2, 'bronze', 'Subindo de nível');
+
+INSERT INTO assinatura_vip (fk_usuario, tipo_plano, status) VALUES (3, 'bronze', 'Subindo de nível');
 
