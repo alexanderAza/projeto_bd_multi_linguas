@@ -64,7 +64,7 @@ drop table perfil_estudante;
 
 
 
-drop table recomendacao_vocabulario
+drop table recomendacao_vocabulario;
 
 
 CREATE TABLE recomendacao_vocabulario(
