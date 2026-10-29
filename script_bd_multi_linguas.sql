@@ -37,7 +37,7 @@ INSERT INTO usuario (nome, email, senha_hash, data_nascimento, faixa_etaria, tip
 
 INSERT INTO usuario (nome, email, senha_hash, data_nascimento, faixa_etaria, tipo_perfil, fk_turma, data_cadastro) values ('jati', 'jati@gmail.com', '14', '2011/05/14', '15', 'es',2, '2026/01/01');
 
-drop table usuario
+drop table usuario;
 
 CREATE TABLE perfil_estudante (
   id_perfil SERIAL PRIMARY KEY,
@@ -52,15 +52,15 @@ CREATE TABLE perfil_estudante (
 
 SELECT * FROM perfil_estudante;
 
-INSERT INTO perfil_estudante (fk_usuario, idioma_nativo, idioma_estudo) values (1, 'formal', 'academico') ;
+INSERT INTO perfil_estudante (fk_usuario, idioma_nativo, idioma_estudo) values (1, 'formal', 'academico');
 
-INSERT INTO perfil_estudante (fk_usuario, idioma_nativo, idioma_estudo) values (2, 'formal', 'academico') ;
+INSERT INTO perfil_estudante (fk_usuario, idioma_nativo, idioma_estudo) values (2, 'formal', 'academico');
 
-INSERT INTO perfil_estudante (fk_usuario, idioma_nativo, idioma_estudo) values (3, 'formal', 'academico') ;
+INSERT INTO perfil_estudante (fk_usuario, idioma_nativo, idioma_estudo) values (3, 'formal', 'academico');
 
 TRUNCATE TABLE perfil_estudante;
 
-drop table perfil_estudante
+drop table perfil_estudante;
 
 
 
@@ -79,6 +79,7 @@ CREATE TABLE recomendacao_vocabulario(
 
 );
 SELECT * FROM recomendacao_vocabulario;
+
 INSERT INTO recomendacao_vocabulario(fk_usuario, palavra_expressao, traducao) values (2,'TEXTO','MAIS TEXTO');
 
 INSERT INTO recomendacao_vocabulario(fk_usuario, palavra_expressao, traducao) values (3,'TEXTO','MAIS TEXTO');
@@ -98,13 +99,13 @@ CREATE TABLE reporte_falha_traducao (
 
 SELECT * FROM reporte_falha_traducao;
 
-INSERT INTO reporte_falha_traducao(fk_usuario, texto_original, traducao_incorreta) VALUES (1,'textoo','mais textoo')
+INSERT INTO reporte_falha_traducao(fk_usuario, texto_original, traducao_incorreta) VALUES (1,'textoo','mais textoo');
 
-INSERT INTO reporte_falha_traducao(fk_usuario, texto_original, traducao_incorreta) VALUES (1,'asdfghj','sdfghjkl')
+INSERT INTO reporte_falha_traducao(fk_usuario, texto_original, traducao_incorreta) VALUES (1,'asdfghj','sdfghjkl');
 
-INSERT INTO reporte_falha_traducao(fk_usuario, texto_original, traducao_incorreta) VALUES (1,'texo','ms texo')
+INSERT INTO reporte_falha_traducao(fk_usuario, texto_original, traducao_incorreta) VALUES (1,'texo','ms texo');
 
-drop table reporte_falha_traducao
+drop table reporte_falha_traducao;
 
 CREATE TABLE turma (
   id_turma SERIAL PRIMARY KEY,
@@ -121,9 +122,9 @@ INSERT INTO turma(fk_escola, nome_turma, ano_letivo) VALUES (2,'escola','1234567
 
 INSERT INTO turma(fk_escola, nome_turma, ano_letivo) VALUES (2,'escola','181234');
 
-drop TABLE professor
-drop TABLE pessoa
-drop TABLE turma
+drop TABLE professor;
+drop TABLE pessoa;
+drop TABLE turma;
 
 create table sala_chat (
   id_sala INT generated always as identity primary key,
@@ -149,7 +150,7 @@ CREATE TABLE mensagem_chat(
   fk_sala int     not null,
   fk_usuario        int not null,
   texto_original    text not null,
-  texto_traduzido       timestamp,
+  texto_traduzido       text,
   idioma_origem     varchar(10) not null,
   idioma_destino    varchar(10) not null,
   comtem_conteudo_inapropriado    boolean,
@@ -160,9 +161,9 @@ CREATE TABLE mensagem_chat(
 
 
 SELECT * FROM  mensagem_chat;
+drop table mensagem_chat;
 
-INSERT INTO mensagem_chat (fk_sala, fk_emissor ,texto_original ,texto_traduzido, idioma_origem, idioma_destino) VALUES ();
-
+INSERT INTO mensagem_chat (fk_sala, fk_usuario , texto_original, idioma_origem, idioma_destino) VALUES (1, 1, 'oscuro', 'espanhol', 'ingles');
 
 CREATE TABLE assinatura_vip (
   id_assinatura SERIAL PRIMARY KEY,
@@ -198,7 +199,7 @@ CREATE TABLE avaliacao_nivel(
 
 );
 
-SELECT * FROM avaliacao_nivel
+SELECT * FROM avaliacao_nivel;
 
 
 INSERT INTO  avaliacao_nivel (fk_usuario, pontuacao_obtida, nivel_resultante, data_realizacao) VALUES (1, 7.5, 17, '11-09-2001');
@@ -218,7 +219,7 @@ CREATE TABLE progresso_aprendizado (
   constraint fk_avaliacao foreign key (fk_avaliacao)references avaliacao_nivel (id_avaliacao)
 
 );
-SELECT * FROM progresso_aprendizado
+SELECT * FROM progresso_aprendizado;
 
 INSERT INTO progresso_aprendizado (fk_usuario, fk_avaliacao, minutos_praticados, licoes_concluidas, data_registro) VALUES (1, 1, 59, 5,'01-09-2021');
 
